@@ -15,13 +15,38 @@ $bash execution.sh
 
 とすると実行されます
 
+### パラメータ
+
+| 変数          | 定義しているファイル | 説明                                                      |
+| ------------- | -------------------- | --------------------------------------------------------- |
+| nsize         | main.f90             | 配列サイズ                                                |
+| nloop         | execusion.sh         | 繰り返し回数                                              |
+| ntrial        | execusion.sh         | 試行回数                                                  |
+| napara        | execusion.sh         | 自動並列化のスレッド数（0 なら off）                      |
+| nomp          | execusion.sh         | OpenMP のスレッド数                                       |
+| compiler_type | execusion.sh         | 利用するコンパイラ（gfortran など）                       |
+| build_type    | execusion.sh         | debug:最適化オプションなし．fast:最適化オプションモリモリ |
+
+### コンパイラオプション
+
+```cmake
+   set(CMAKE_Fortran_FLAGS_DEBUG   "-O0 -Wall -pedantic -std=f2008
+                                    -fbounds-check -Wuninitialized
+                                    -ffpe-trap=invalid,zero,overflow
+                                    -fbacktrace -g -Ddebug
+                                    ${omp_option} ${autopara_option}")
+   set(CMAKE_Fortran_FLAGS_PROFILE "-O3 -march=narive -mtune=native -p
+                                    ${omp_option} ${autopara_option}")
+   set(CMAKE_Fortran_FLAGS_FAST    "-O3 -march=native -mtune=native
+                                    ${omp_option} ${autopara_option}")
+```
+
+`omp_option`と`autopara_option`はそれぞれ omp.txt と apara.txt から読み込まれます（execusion.sh を実行した場合，この二つのテキストファイルは自動生成されます）
+
 ## 実行時間計測
 
 `omp_get_wtime`を用います
-
-## コンパイラオプション
-
-s
+nloop 回の繰り返しを ntrial 回試行して，平均と標準偏差を出力します
 
 ## one_dimensional
 
