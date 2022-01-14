@@ -53,8 +53,12 @@ nloop 回の繰り返しを ntrial 回試行して，平均と標準偏差を出
 src/one_dimensional
 一次元配列の要素ごとの和・積・商などを求めています
 配列の宣言位置や，変数の型による計算時間の違いを確認します
-src/two_dimensional
-d
+
+####記憶領域に着目して宣言位置を変化させた三種類の配列を作成
+
+1. main で定義し，静的記憶領域(static)に置かれることを期待
+2. module 内 subroutine で定義し，スタック領域(stack)に置かれることを期待
+3. module 内 subroutine で allocate した，ヒープ領域(heap)に置かれることを期待
 
 ## two_dimensional
 
@@ -64,4 +68,10 @@ src/two_dimensional
 
 ### 4 点ステンシルの jacobi 法
 
+![fig1](./figs/auto-parallelize_jacobi_iteration.jpg)
+![fig2](./figs/OpenMP_jacobi_iteration.jpg)
+
 ### Roe の近似リーマン解法
+
+![fig3](./figs/auto-parallelize_riemann_problem.jpg)
+![fig4](./figs/OpenMP_riemann_problem.jpg)
