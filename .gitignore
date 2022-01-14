@@ -1,10 +1,14 @@
 *.md
-*.txt
+#*.txt
 *.py
 *.jpg
 *.csv
 *.s
 
+autopara.txt
+input.txt
+list.txt
+openmp.txt
 
 figs
 .vscode

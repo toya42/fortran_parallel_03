@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.14)
+
+project(linearadvection Fortran)
+enable_language(Fortran)
+find_package(OpenMP REQUIRED)
+
+file (READ openmp.txt omp_option)
+file (READ autopara.txt autopara_option)
+
+set(EXECUTABLE 1d_tests.exe)
+
+if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
+   set(CMAKE_Fortran_FLAGS_DEBUG   "-O0            -Wall -pedantic  -std=f2008                        \
+                                    -fbounds-check -Wuninitialized  -ffpe-trap=invalid,zero,overflow  \
+                                    -fbacktrace    -g -Ddebug          ${omp_option} ${autopara_option}")
+   set(CMAKE_Fortran_FLAGS_PROFILE "-O3 -march=narive -mtune=native -p ${omp_option} ${autopara_option}")
+   set(CMAKE_Fortran_FLAGS_FAST    "-O3 -march=native -mtune=native    ${omp_option} ${autopara_option}")
+endif()
+
+add_executable(${EXECUTABLE}
+   main.f90
+   one_dimensional_tests.f90
+   tests_int4.f90
+   tests_real4.f90
+   tests_real8.f90
+   tests_complex8.f90
+   tests_logical.f90
+   wall_clock_time.f90
+  )
+
+
+target_link_libraries(${EXECUTABLE}
+    PRIVATE
+    OpenMP::OpenMP_Fortran
+)
