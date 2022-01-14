@@ -3,6 +3,9 @@
 *.py
 *.jpg
 *.csv
+*.s
+
+
 figs
 .vscode
 Run*
