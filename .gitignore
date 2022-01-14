@@ -1,3 +1,14 @@
+*.md
+*.txt
+*.py
+*.jpg
+*.csv
+figs
+.vscode
+Run*
+Build*
+output*
+
 # Prerequisites
 *.d
 
