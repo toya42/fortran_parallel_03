@@ -108,11 +108,13 @@ roe の近似リーマン解法
 ### 4 点ステンシルの jacobi 法
 
 nsize=1000．つまり配列サイズは(1000,1000)
+
 ![fig1](./figs/auto-parallelize_jacobi_iteration.jpg)
 ![fig2](./figs/OpenMP_jacobi_iteration.jpg)
 
 ### Roe の近似リーマン解法
 
 nsize=200
+
 ![fig3](./figs/auto-parallelize_riemann_problem.jpg)
 ![fig4](./figs/OpenMP_riemann_problem.jpg)
