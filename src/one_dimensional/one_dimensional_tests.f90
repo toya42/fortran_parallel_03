@@ -388,6 +388,10 @@ module mod_1d
       !bd_static = bd_static*1.0d10
       !cd_static = cd_static*1.0d10
       ad_static = 12.0d0;bd_static=6.0d0;cd_static=2.0d0
+      ai_static = int(ad_static,int32)  ! -1e4 ~ 1e4
+      bi_static = int(bd_static,int32)
+      ci_static = int(cd_static,int32)
+ 
       ! real
       ar_static = real(ad_static,real32)
       br_static = real(bd_static,real32)
