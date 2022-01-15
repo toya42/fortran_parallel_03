@@ -373,20 +373,21 @@ module mod_1d
       integer(int32) :: i
  
       ! (1) type 1 (defined at main. static?)
-      call random_number(ad_static) ! 0 ~ 1.0
-      call random_number(bd_static)
-      call random_number(cd_static)
-      ad_static = 2.0*(ad_static-0.5) ! -1.0 ~ 1.0
-      bd_static = 2.0*(bd_static-0.5)
-      cd_static = 2.0*(cd_static-0.5)
-      ! integer (4byte)
-      ai_static = int(ad_static*1.0d4,int32)  ! -1e4 ~ 1e4
-      bi_static = int(bd_static*1.0d4,int32)
-      ci_static = int(cd_static*1.0d4,int32)
-      ! double precision
-      ad_static = ad_static*1.0d10  ! -1e10 ~ 1e10
-      bd_static = bd_static*1.0d10
-      cd_static = cd_static*1.0d10
+      !call random_number(ad_static) ! 0 ~ 1.0
+      !call random_number(bd_static)
+      !call random_number(cd_static)
+      !ad_static = 2.0*(ad_static-0.5) ! -1.0 ~ 1.0
+      !bd_static = 2.0*(bd_static-0.5)
+      !cd_static = 2.0*(cd_static-0.5)
+      !! integer (4byte)
+      !ai_static = int(ad_static*1.0d4,int32)  ! -1e4 ~ 1e4
+      !bi_static = int(bd_static*1.0d4,int32)
+      !ci_static = int(cd_static*1.0d4,int32)
+      !! double precision
+      !ad_static = ad_static*1.0d10  ! -1e10 ~ 1e10
+      !bd_static = bd_static*1.0d10
+      !cd_static = cd_static*1.0d10
+      ad_static = 12.0d0;bd_static=6.0d0;cd_static=2.0d0
       ! real
       ar_static = real(ad_static,real32)
       br_static = real(bd_static,real32)

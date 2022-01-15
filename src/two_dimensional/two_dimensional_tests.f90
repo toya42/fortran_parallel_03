@@ -65,7 +65,7 @@ module mod_2d
       call display(index,napara,nomp,num_implementation,implementation_name,wct_ave,wct_sgm,testname(index))
       deallocate(amatrix,bmatrix,implementation_name)
 
-      ! test 2 : jacobi iteration (4 point stencil)
+      ! test 2 : riemann problem
       print *,'### test 2 ###'
       index = 2
       testname(index) = 'riemann problem'
@@ -79,6 +79,7 @@ module mod_2d
 
       allocate(primitives(4,nsize2,nsize2),flux_2d(4,nsize2,nsize2))
       call random_number(primitives)
+      primitives = primitives+1.0d0
       wct_raw = 0.0d0;wct_ave=0.0d0;wct_sgm=0.0d0
 
       do n=1,ntrial
