@@ -73,7 +73,7 @@ module mod_tests_riemann_flux_roe
       call wall_clock_time(t1)
       !!$omp parallel
       do l=1,nloop
-        !$omp parallel do private(j,k,pl,pr,roeflux_3d) &
+        !$omp parallel do collapse(2) private(j,k,pl,pr,roeflux_3d) &
         !$omp             shared(nsize,primitives_2d,roeflux_2d)
         do k=2,nsize-1
           do j=1,nsize-1
@@ -93,7 +93,7 @@ module mod_tests_riemann_flux_roe
           end do
         end do
         !$omp end parallel do
-        !$omp parallel do private(j,k,pl,pr,roeflux_3d) &
+        !$omp parallel do collapse(2) private(j,k,pl,pr,roeflux_3d) &
         !$omp             shared(nsize,primitives_2d,roeflux_2d)
         do j=2,nsize-1
           do k=1,nsize-1

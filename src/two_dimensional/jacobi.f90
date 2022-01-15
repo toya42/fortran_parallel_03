@@ -36,7 +36,7 @@ module mod_tests_jacobi_iteration_4_point_stencil
       i = 2
       call wall_clock_time(t1)
       do l=1,nloop
-        !$omp parallel do private(j,k) shared(nsize,a,b)
+        !$omp parallel do collapse(2) private(j,k) shared(nsize,a,b)
         do k=2,nsize-1
           do j=2,nsize-1
             b(j,k) = 0.25d0*(a(j,k-1)+a(j-1,k)+a(j+1,k)+a(j,k+1))
@@ -44,7 +44,7 @@ module mod_tests_jacobi_iteration_4_point_stencil
         end do
         !$omp end parallel do
         !error = sum(abs(a-b))
-        !$omp parallel do private(j,k) shared(nsize,a,b)
+        !$omp parallel do collapse(2) private(j,k) shared(nsize,a,b)
         do k=2,nsize-1
           do j=2,nsize-1
             a(j,k) = b(j,k)
