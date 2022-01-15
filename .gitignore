@@ -1,7 +1,8 @@
-*.md
+#*.md
 #*.txt
 *.py
 #*.jpg
+*.png
 *.csv
 *.s
 
